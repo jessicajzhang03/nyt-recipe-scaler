@@ -1,0 +1,22 @@
+{
+    "name": "Recipe Scaler",
+    "version": "0.1.0",
+    "description": "Scales recipes automatically",
+    "content_scripts": [
+        {
+            "matches": ["https://cooking.nytimes.com/recipes/*"], 
+            "js": ["recipeScaler.js"]
+        }
+    ],
+    "manifest_version": 2,
+    "browser_action": {
+        "default_title": "Scale a recipe",
+        "default_popup": "popup.html"
+    }, 
+    "icons": {
+        "16": "icon/drink_water16.png",
+        "32": "icon/drink_water32.png",
+        "48": "icon/drink_water48.png",
+        "128": "icon/drink_water128.png"
+    }
+}
