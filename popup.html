@@ -1,40 +1,12 @@
-<!-- Copyright 2017 The Chromium Authors. All rights reserved.
-Use of this source code is governed by a BSD-style license that can be
-found in the LICENSE file. -->
 <html>
   <head>
     <title>Recipe Scaler Popup</title>
-    <style>
-      body {
-        text-align: center;
-      }
-
-      #hydrateImage {
-        width: 100px;
-        margin: 5px;
-      }
-
-      button {
-        margin: 5px;
-        outline: none;
-      }
-
-      button:hover {
-        outline: #80DEEA dotted thick;
-      }
-    </style>
     <script src="popup.js"></script>
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
   </head>
   <body>
       <form id="form">
-          <input type="text" id="num">
-          <input type="text" id="den">
+          Scaling numerator: <input type="text" id="num">
+          Scaling denominator: <input type="text" id="den">
           <input type="submit" value="Submit" id="submit">
       </form>
   </body>

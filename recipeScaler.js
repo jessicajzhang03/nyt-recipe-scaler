@@ -22,7 +22,6 @@ var parseVulgarFraction = {
 function parseToNumber(quantity) {
     if (/\S/.test(quantity)) {
         var split = quantity.split(" ");
-        console.log(split);
         if (split.length == 1) {
             if (isNaN(parseInt(split[0]))) {
                 return parseVulgarFraction[split[0].charCodeAt(0)];
@@ -33,11 +32,15 @@ function parseToNumber(quantity) {
             if (split.length == 2) {
                 var part1 = [parseInt(split[0]),1]; 
                 var part2 = parseVulgarFraction[split[1].charCodeAt(0)];
-                console.log(part1);
-                console.log(part2);
-                return [part1[0]*part2[1] + part2[0]*part1[1], part1[1]*part2[1]];
+                try {
+                    return [part1[0]*part2[1] + part2[0]*part1[1], part1[1]*part2[1]];
+                } catch (err) {
+                    alert("Something went wrong with parsing the quantities as numbers. Check the console!")
+                    console.log("Error with " + quantity);
+                    return "ERROR";
+                }
             } else {
-                alert("Something went wrong with parsing the quantities as numbers. You'll have to do the math yourself. :(")
+                alert("Something went wrong with parsing the quantities as numbers. Check the console!")
                 return "ERROR"; 
             }
         }
@@ -56,10 +59,12 @@ function gcd(x, y) {
 
 function scaleRecipe(num,den) {
     for (let i = 0; i < ingredients.length; i++) {
-        console.log(ingredients[i].innerHTML.trim()); 
-        var parsed = parseToNumber(ingredients[i].innerHTML.trim());
-        console.log(parsed);
-        if (parsed != null) {
+        var ingredient = ingredients[i].innerHTML.trim();
+        if (ingredient == "<span class=\"icon-nutritional-info\"></span>") {
+            return;
+        }
+        var parsed = parseToNumber(ingredient);
+        if (parsed != null && parsed != "ERROR") {
             var newNum = num * parsed[0]; 
             var newDen = den * parsed[1];
             var g = gcd(newNum,newDen);

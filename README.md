@@ -1,2 +1,3 @@
 # nyt-recipe-scaler
-Scales New York Times Cooking recipes
+
+Scales New York Times Cooking recipes.
